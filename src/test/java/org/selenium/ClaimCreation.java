@@ -7,6 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ClaimCreation {
 
@@ -37,15 +41,17 @@ public class ClaimCreation {
             driver.findElement(By.id("TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl")).click();
             Thread.sleep(1000);
 
-            driver.findElement(By.id("FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_false-boxLabelEl")).click();
-            Thread.sleep(1000);
 
-            WebElement policyNum =driver.findElement(By.id("FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyNumber-inputEl"));
-            String ranPolicyNum = RandomStringUtils.randomNumeric(7);
+            WebElement radioBtn = driver.findElement(By.xpath("//input[@id=\"FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_false-inputEl\"]"));
+            radioBtn.click();
+
+            Thread.sleep(1000);
+            WebElement policyNum =driver.findElement(By.xpath("//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyNumber-inputEl']"));
+            String ranPolicyNum = RandomStringUtils.randomNumeric(8);
             policyNum.sendKeys(ranPolicyNum);
 
             Thread.sleep(1000);
-            driver.findElement(By.id("FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Type-inputEl")).click();
+            driver.findElement(By.xpath("//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Type-inputEl']")).click();
 
             Thread.sleep(1000);
             driver.findElement(By.xpath("//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above']//li[text()='Personal Auto']")).click();
