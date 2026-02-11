@@ -6,12 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class PolicyCreation {
 
-    static void main() {
+    @Test
+    public void policyCreation_1(){
 
         // Policy Creation
 
