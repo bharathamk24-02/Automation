@@ -9,10 +9,18 @@
     </test>
 
     <!-- Suite 2 -->
-<!--    <test name="Selenium">-->
-<!--        <classes>-->
-<!--            <class name="org.selenium.PolicyCreation"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Selenium">
+        <classes>
+            <class name="org.selenium.PolicyCreation"/>
+        </classes>
+    </test>
+
+    <test name="Selenium">
+        <classes>
+            <class name="org.selenium.ClaimCreation"/>
+        </classes>
+    </test>
+
+
 </suite>
 

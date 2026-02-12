@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
@@ -17,8 +18,10 @@ public class ClaimCreation {
 
 
 
-    public static void main(String[] args) {
+    //public static void main(String[] args) {
 
+    @Test
+    public  void claimCreation(){
         try {
 
             String userNameAndPassword = "exp_test";
