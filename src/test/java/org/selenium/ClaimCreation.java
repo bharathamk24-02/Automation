@@ -11,8 +11,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ClaimCreation {
+
+
 
     public static void main(String[] args) {
 
@@ -51,27 +54,27 @@ public class ClaimCreation {
             policyNum.sendKeys(ranPolicyNum);
 
             Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Type-inputEl']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above']//li[text()='Personal Auto']")).click();
-
-            Thread.sleep(1000);
             WebElement LossDate = driver.findElement(By.xpath("//input[@id=\"FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Claim_LossDate-inputEl\"]"));
             LossDate.sendKeys("02/10/2026");
 
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//div[@class=\"x-form-trigger x-form-trigger-default x-form-time-trigger x-form-time-trigger-default  x-form-trigger-focus\"]//li[text()='12:00 AM']")).click();
+            By typeLocator = By.xpath("//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Type-inputEl']");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            WebElement element = wait.until(ExpectedConditions.refreshed(
+                    ExpectedConditions.elementToBeClickable(typeLocator)
+            ));
+            element.click();
 
             Thread.sleep(1000);
-            WebElement effectiveDate = driver.findElement(By.xpath("//input[@id=\"FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:NewClaimPolicyGeneralPanelSet:NewClaimPolicyGeneralDV:EffectiveDate-inputEl\"]"));
+            driver.findElement(By.xpath("//li[text()='Personal Auto']")).click();
+
+            Thread.sleep(1000);
+            WebElement effectiveDate = driver.findElement(By.xpath("//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:NewClaimPolicyGeneralPanelSet:NewClaimPolicyGeneralDV:EffectiveDate-inputEl']"));
             effectiveDate.sendKeys("02/11/2025");
 
             Thread.sleep(1000);
             WebElement expirationDate = driver.findElement(By.xpath("//input[@id=\"FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:NewClaimPolicyGeneralPanelSet:NewClaimPolicyGeneralDV:ExpirationDate-inputEl\"]"));
             expirationDate.sendKeys("02/12/2027");
 
-            //driver.findElement(By.xpath("//input[@id=\"FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:NewClaimPolicyGeneralPanelSet:NewClaimPolicyGeneralDV:Insured_Name-inputEl\"]")).click();
 
             Thread.sleep(1000);
             driver.findElement(By.xpath("//a[@id=\"FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:NewClaimPolicyGeneralPanelSet:NewClaimPolicyGeneralDV:Insured_Name:Insured_NameMenuIcon\"]")).click();
@@ -98,25 +101,28 @@ public class ClaimCreation {
             driver.findElement(By.id("FNOLWizard:Next-btnInnerEl")).click();
 
             Thread.sleep(1000);
-            driver.findElement(By.id("//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']")).click();
+            driver.findElement(By.xpath("//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']")).click();
 
             Thread.sleep(1000);
-            driver.findElement(By.id("//div[@class=\"x-form-trigger x-form-trigger-default x-form-time-trigger x-form-time-trigger-default  x-form-trigger-focus\"]//li[text()='Bharath M']")).click();
+            driver.findElement(By.xpath("//li[text()='Bharath kumar M']")).click();
 
             Thread.sleep(1000);
             driver.findElement(By.id("FNOLWizard:Next-btnInnerEl")).click();
 
             Thread.sleep(1000);
+            driver.findElement(By.xpath("//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']")).click();
+
+            Thread.sleep(1000);
             driver.findElement(By.xpath("//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_LossCause-inputEl']")).click();
 
             Thread.sleep(1000);
-            driver.findElement(By.xpath("//div[@class=\"x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default x-form-trigger-focus\"]//li[text()='Collision while turning left']")).click();
+            driver.findElement(By.xpath("//li[text()='Collision while turning left']")).click();
 
             Thread.sleep(1000);
             driver.findElement(By.xpath("//input[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl\"]")).click();
 
             Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@value='Test, Anchorage, AK 99501']")).click();
+            driver.findElement(By.xpath("//li[text()='Anchorage, AK 99501']")).click();
 
            //step 4 Nxt Btn
             Thread.sleep(1000);
@@ -131,10 +137,18 @@ public class ClaimCreation {
             driver.findElement(By.id("FNOLWizard:Finish-btnInnerEl")).click();
 
             Thread.sleep(1000);
-            WebElement claimNumAndSuccessMsg = driver.findElement(By.id("//label[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:Header']"));
+            WebElement claimNumAndSuccessMsg = driver.findElement(By.xpath("//table[@id=\"NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV-table\"]//td[1]"));
             System.out.println("***************** Claim Is Successfully Created **********************");
             System.out.println("The claimNumber is :" + claimNumAndSuccessMsg.getText());
 
+            Thread.sleep(1000);
+            driver.findElement(By.xpath("//div[@id=\"NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl\"]")).click();
+            Thread.sleep(1000);
+            List<WebElement> summaryDetails = driver.findElements(By.xpath("//span[@class='infobar_elem_val']"));
+
+            for (int i=0 ;i<summaryDetails.size();i++){
+                System.out.println("The summary Details :" +summaryDetails.get(i).getText());
+            }
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

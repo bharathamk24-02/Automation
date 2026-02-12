@@ -106,7 +106,7 @@ public class PolicyCreation {
 
             Thread.sleep(1000);
 
-            //PC  Tab
+            //Guideware.feature  Tab
 
             WebElement actionsBtn = driver.findElement(By.xpath("//span[@id=\"AccountFile:AccountFileMenuActions-btnEl\"]"));
             actions.moveToElement(actionsBtn, 30, 0).click().perform();
