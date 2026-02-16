@@ -11,9 +11,9 @@
     <!-- Suite 2 -->
     <test name="Selenium">
         <classes>
-            <class name="org.selenium.PolicyCreation"/>
-            <class name="org.selenium.ClaimCreation"/>
-            <class name="org.selenium.ClaimCreation_Exposure"/>
+            <class name="sample.PolicyCreation"/>
+            <class name="sample.ClaimCreation"/>
+            <class name="sample.ClaimCreation_Exposure"/>
 
         </classes>
     </test>

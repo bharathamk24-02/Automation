@@ -1,5 +1,6 @@
-package org.selenium;
+package sample;
 
+import com.sun.jna.platform.win32.WinDef;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,16 +9,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
+
 
 import java.time.Duration;
 import java.util.List;
 
-public class ClaimCreation_Exposure {
+public class ClaimCreation {
 
-    @Test
-    public void claimCreationExposure() throws InterruptedException {
 
+
+    //public static void main(String[] args) {
+
+    public  void claimCreation(){
         try {
 
             String userNameAndPassword = "exp_test";
@@ -37,7 +40,7 @@ public class ClaimCreation_Exposure {
             WebElement dropdown = driver.findElement(
                     By.xpath("//span[contains(@id,'TabBar:ClaimTab-btnWrap')]")
             );
-            actions.moveToElement(dropdown, 30, 0).click().perform();
+            actions.moveToElement(dropdown,30,0).click().perform();
             Thread.sleep(2000);
 
             driver.findElement(By.id("TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl")).click();
@@ -48,7 +51,7 @@ public class ClaimCreation_Exposure {
             radioBtn.click();
 
             Thread.sleep(1000);
-            WebElement policyNum = driver.findElement(By.xpath("//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyNumber-inputEl']"));
+            WebElement policyNum =driver.findElement(By.xpath("//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyNumber-inputEl']"));
             String ranPolicyNum = RandomStringUtils.randomNumeric(8);
             policyNum.sendKeys(ranPolicyNum);
 
@@ -123,7 +126,7 @@ public class ClaimCreation_Exposure {
             Thread.sleep(1000);
             driver.findElement(By.xpath("//li[text()='Anchorage, AK 99501']")).click();
 
-            //step 4 Nxt Btn
+           //step 4 Nxt Btn
             Thread.sleep(1000);
             driver.findElement(By.id("FNOLWizard:Next-btnInnerEl")).click();
 
@@ -145,95 +148,11 @@ public class ClaimCreation_Exposure {
             Thread.sleep(1000);
             List<WebElement> summaryDetails = driver.findElements(By.xpath("//span[@class='infobar_elem_val']"));
 
-            for (int i = 0; i < summaryDetails.size(); i++) {
-                System.out.println("The summary Details :" + summaryDetails.get(i).getText());
+            for (int i=0 ;i<summaryDetails.size();i++){
+                System.out.println("The summary Details :" +summaryDetails.get(i).getText());
             }
 
-
-            //Actions Btn
-
-            Thread.sleep(1000);
-            WebElement actionBtn = driver.findElement(By.id("Claim:ClaimMenuActions-btnWrap"));
-            actions.moveToElement(actionBtn, 30, 0).click().perform();
-
-
-            //Get BY COVERAGE
-            Thread.sleep(1000);
-            driver.findElement(By.id("Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverageType-textEl")).click();
-
-            // CBtn
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//a[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverageType:0:item-itemEl']")).click();
-
-            // Collision
-            Thread.sleep(1000);
-            driver.findElement(By.id("Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverageType:0:item:0:item-textEl")).click();
-
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id='NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Picker-inputEl']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//li[text()='Bharath kumar M']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id='NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Type-inputEl']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//li[text()=\"Insured\"]")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//a[@id='NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:Vehicle_IncidentMenuIcon']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//span[@id=\"NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:NewClaimVehicleDamageDV_NewIncidentMenuItem-textEl\"]")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id=\"NewVehicleIncidentPopup:NewVehicleIncidentScreen:VehIncidentDetailDV:VehicleIncidentDV:Vehicle_Picker-inputEl\"]")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//li[text()='New...']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id=\"NewVehicleIncidentPopup:NewVehicleIncidentScreen:VehIncidentDetailDV:VehicleIncidentDV:Vehicle_Year-inputEl\"]")).sendKeys("2014");
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id=\"NewVehicleIncidentPopup:NewVehicleIncidentScreen:VehIncidentDetailDV:VehicleIncidentDV:Vehicle_Make-inputEl\"]")).sendKeys("Honda");
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id=\"NewVehicleIncidentPopup:NewVehicleIncidentScreen:VehIncidentDetailDV:VehicleIncidentDV:Vehicle_Model-inputEl\"]")).sendKeys("CB350 RS");
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id=\"NewVehicleIncidentPopup:NewVehicleIncidentScreen:VehIncidentDetailDV:VehicleIncidentDV:Driver_Picker-inputEl\"]")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//li[text()='Bharath kumar M']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//input[@id=\"NewVehicleIncidentPopup:NewVehicleIncidentScreen:VehIncidentDetailDV:VehicleIncidentDV:LossOccured-inputEl\"]")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//li[text()='At premises']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//span[@id='NewVehicleIncidentPopup:NewVehicleIncidentScreen:Update-btnInnerEl']")).click();
-
-            Thread.sleep(1000);
-            driver.findElement(By.id("NewExposure:NewExposureScreen:Update-btnWrap")).click();
-
-            System.out.println(" ****************** Exposure Added SuccessFully ************************** ");
-
-            Thread.sleep(1000);
-            List<WebElement> exposureDetails = driver.findElements(By.xpath("//div[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//td"));
-            for (int i = 0; i < exposureDetails.size(); i++) {
-                System.out.println("The Exposure Details : " + exposureDetails.get(i).getText());
-            }
-
-
-        } catch (RuntimeException | InterruptedException e) {
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
-
-
         }
-    }
-}
+    }}

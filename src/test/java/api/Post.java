@@ -4,16 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.testng.annotations.Test;
-
 import static io.restassured.RestAssured.given;
 
 public class Post extends PostRequest {
 
     public static String globalId;
     //POST
-
-    @Test(priority = 1)
     public static void postMethod(){
 
        PostRequest postRequest = new PostRequest();
@@ -48,7 +44,6 @@ public class Post extends PostRequest {
         System.out.println("_________________________________________________________________");
 
     }
-    @Test(priority = 2)
     public static void putMethod(){
 
         UpdateRequest request = new UpdateRequest();
@@ -83,7 +78,7 @@ public class Post extends PostRequest {
 
 }
 
-    @Test(priority = 3)
+
     public static void getMethod() throws JsonProcessingException {
 
 
@@ -109,7 +104,7 @@ public class Post extends PostRequest {
         System.out.println("_________________________________________________________________");
 
     }
-    @Test(priority = 4)
+
     public static void deleteMethod() {
 
         // DELETE
