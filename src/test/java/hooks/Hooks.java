@@ -1,31 +1,53 @@
 package hooks;
 
-import base.TestContext;
 import io.cucumber.java.Before;
-import org.junit.After;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import io.cucumber.java.After;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Hooks {
 
-    private static WebDriver driver;
+    public static WebDriver driver;
 
-    @Before
+    @Before("@UI")
     public void setUp() {
         System.out.println("************ Starting Browser ************");
-        driver = new ChromeDriver();
+        WebDriverManager.chromedriver().setup();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
 
-    @After
+    // 🔹 API Hook (NO Browser)
+    @Before("@API")
+    public void apiSetup() {
+        System.out.println("******** Starting API Test ********");
+        // No driver initialization here
+    }
+
+    @After("@UI")
     public void tearDown() {
-        driver.close();
-        System.out.println("************* Drive closed ****************");
+
+        if (driver != null) {
+            driver.quit();
+            System.out.println("************* Driver closed ****************");
+        }
     }
 
     public static WebDriver getDriver() {
-
         return driver;
     }
 }
+
+
+
+
+
 

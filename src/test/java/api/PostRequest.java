@@ -3,9 +3,9 @@ package api;
 public class PostRequest {
 
 
-        public String empId;
-        public String employeeName;
-        public String course;
+        public static String empId;
+        public static String employeeName;
+        public static String course;
 
         public String getStartDate() {
             return startDate;
@@ -87,17 +87,17 @@ public class PostRequest {
             this.projectName = projectName;
         }
 
-        public String startDate;
-        public String endDate;
-        public String status;
-        public String trainerName;
-        public String trainingType;
-        public int percentCompleted;
-        public String projectName;
+        public static String startDate;
+        public static String endDate;
+        public static String status;
+        public static String trainerName;
+        public static String trainingType;
+        public static int percentCompleted;
+        public static String projectName;
 
-        public  String id;
+        public static   String id;
 
-    public String getId() {
+    public static String getId() {
         return id;
     }
 

@@ -1,6 +1,7 @@
 Feature: Account Creation Test cases
 
-  @Regression
+  @UI
+  @Regression @AccountCreationTest
   Scenario: To verify the account creation in Guideware
 
     Given User on the Guidware application

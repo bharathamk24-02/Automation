@@ -14,7 +14,7 @@ import reusablemethods.CommonMethods;
 
 public class AccountCreation_Steps extends CommonMethods {
 
-    static WebDriver driver;
+    WebDriver driver;
 
     @FindBy(xpath = "//input[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     private WebElement userName;
@@ -29,12 +29,9 @@ public class AccountCreation_Steps extends CommonMethods {
     String policyCreationUrl = "http://10.192.190.131:8180/pc/PolicyCenter.do";
     String userNameAndPassword = "exp_test";
 
-
     public AccountCreation_Steps() {
-        this.driver = Hooks.getDriver();   // driver fetched AFTER hook runs
-        PageFactory.initElements(driver, this);
+        driver = Hooks.getDriver();
     }
-
 
     public void login() throws InterruptedException {
         driver.get(policyCreationUrl);
@@ -61,7 +58,7 @@ public class AccountCreation_Steps extends CommonMethods {
         Actions actions = new Actions(driver);
         WebElement dropdown = driver.findElement(
                 By.xpath("//span[contains(@id,'AccountTab-btnEl')]"));
-        actions.moveToElement(dropdown,30,0).click().perform();
+        actions.moveToElement(dropdown, 30, 0).click().perform();
         Thread.sleep(2000);
     }
 
@@ -78,14 +75,15 @@ public class AccountCreation_Steps extends CommonMethods {
     public void enterLastName() throws InterruptedException {
         WebElement enterLastname = driver.findElement(By.xpath("//input[@id=\"NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalPersonNameInputSet:LastName-inputEl\"]"));
         String randUsername = RandomStringUtils.randomAlphabetic(3);
-        enterLastname.sendKeys("kumar"+ randUsername);
+        enterLastname.sendKeys("kumar" + randUsername);
     }
 
 
     public void clickSubmitbtn() throws InterruptedException {
         Thread.sleep(1000);
         WebElement clickSubmitbtn = driver.findElement(By.xpath("//a[@id=\"NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search\"]"));
-        clickSubmitbtn.click();;
+        clickSubmitbtn.click();
+        ;
     }
 
     public void clickNewAccountCreationBtnAndSelectPerson() throws InterruptedException {
@@ -100,7 +98,8 @@ public class AccountCreation_Steps extends CommonMethods {
         WebElement enterAddress = driver.findElement(By.id("CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl"));
         String address = RandomStringUtils.randomAlphabetic(3);
         System.out.println(address);
-        enterAddress.sendKeys("Test-"+ address);;
+        enterAddress.sendKeys("Test-" + address);
+        ;
     }
 
     public void enterPincode() throws InterruptedException {
@@ -134,23 +133,13 @@ public class AccountCreation_Steps extends CommonMethods {
     public void clickOrganisationUpdateBtn() throws InterruptedException {
         driver.findElement(By.xpath("//span[@id=\"CreateAccount:CreateAccountScreen:Update-btnInnerEl\"]")).click();
         Thread.sleep(3000);
-
     }
 
     public void validateAccountDetails() throws InterruptedException {
-        WebElement expectedAccNum =driver.findElement(By.xpath("//div[@id=\"AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:AccountNumber-bodyEl\"]"));
-        System.out.println("AccountNum :"+ expectedAccNum.getText());
+        WebElement expectedAccNum = driver.findElement(By.xpath("//div[@id=\"AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:AccountNumber-bodyEl\"]"));
+        System.out.println("AccountNum :" + expectedAccNum.getText());
         Thread.sleep(1000);
     }
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -1,5 +1,9 @@
 Feature: API TEST SCENARIOS
 
+  @API @Regression
+  Scenario: Create, Update, Get and Delete Training
 
-  Scenario: To verify the api chaining in post-put-get-delete
-    Given
+    Given user creates a new training record
+    When user updates the training record
+    And user fetches the training record
+    Then user deletes the training record

@@ -2,11 +2,13 @@ package stepdefinitions;
 
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
+import reusablemethods.CommonMethods;
 import steps.PolicyCreation_steps;
 
-public class Policy_Creation {
+public class Policy_Creation extends CommonMethods {
 
     WebDriver driver;
 
@@ -14,6 +16,7 @@ public class Policy_Creation {
 
     @And("click on the action button and select new submission")
     public void clickOnTheActionButtonAndSelectNewSubmission() {
+
         steps.clickActionBtnAndClickNewSubmission();
     }
 
@@ -34,7 +37,7 @@ public class Policy_Creation {
 
     @And("select existing driver and enter the license#")
     public void selectExistingDriverAndEnterTheLicense() throws InterruptedException {
-        steps.selectExistinDrivers();
+        steps.selectExistingDrivers();
     }
 
     @And("select the license state and click on the roles section")

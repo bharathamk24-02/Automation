@@ -1,7 +1,7 @@
 Feature: Policy Creation Test Cases
 
-
-  @Regression-1
+  @UI
+  @Regression @PolicycreationTest
   Scenario: To verify the policy creation in Guideware
 
     Given User on the Guidware application

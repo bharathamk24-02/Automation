@@ -1,18 +1,23 @@
 package steps;
 
-import net.thucydides.core.steps.TestContext;
+import hooks.Hooks;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import reusablemethods.CommonMethods;
 
-import java.sql.DriverManager;
 import java.util.List;
 
-public class PolicyCreation_steps {
+public class PolicyCreation_steps extends CommonMethods {
     WebDriver driver;
+
+    public PolicyCreation_steps() {
+        driver = Hooks.getDriver();
+    }
+
 
     public void clickActionBtnAndClickNewSubmission() {
 
@@ -47,7 +52,7 @@ public class PolicyCreation_steps {
 
     }
 
-    public void selectExistinDrivers() throws InterruptedException {
+    public void selectExistingDrivers() throws InterruptedException {
 
         Thread.sleep(1000);
         driver.findElement(By.xpath("//span[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact-textEl\"]")).click();
@@ -56,7 +61,7 @@ public class PolicyCreation_steps {
         driver.findElement(By.xpath("//span[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact:0:UnassignedDriver-textEl\"]")).click();
 
         Thread.sleep(1000);
-        WebElement dob = driver.findElement(By.xpath("//input[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:DateOfBirth-inputEl\"]"));
+        WebElement dob = driver.findElement(By.xpath("//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:DateOfBirth-inputEl']"));
         dob.click();
         dob.clear();
         dob.sendKeys("02/24/1952");
@@ -141,10 +146,11 @@ public class PolicyCreation_steps {
         Thread.sleep(1000);
         WebElement costAmt = driver.findElement(By.id("SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:CostNew_DV-inputEl"));
         costAmt.sendKeys("200");
+        Thread.sleep(1000);
     }
 
     public void clickOnNextBtnFromPACoveragesPageAndClickOnNextFromRiskAnalysisPage() throws InterruptedException {
-        Thread.sleep(1000);
+
         driver.findElement(By.id("SubmissionWizard:Next-btnInnerEl")).click();
 
         Thread.sleep(1000);
@@ -152,12 +158,11 @@ public class PolicyCreation_steps {
 
         Thread.sleep(1000);
         driver.findElement(By.id("SubmissionWizard:Next-btnInnerEl")).click();
-
+        Thread.sleep(1000);
     }
 
     public void clickOnQuoteFromPolicyReviewPageAndSelectBindingOptions() throws InterruptedException {
 
-        Thread.sleep(1000);
         driver.findElement(By.id("SubmissionWizard:SubmissionWizard_PolicyReviewScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl")).click();
 
         Thread.sleep(1000);
@@ -173,11 +178,12 @@ public class PolicyCreation_steps {
 
         Thread.sleep(1000);
         driver.findElement(By.xpath("//span[contains(text(),'OK')]")).click();
+        Thread.sleep(5000);
     }
 
     public void clickViewYourPolicyAndValidateSummaryPolicyTable() throws InterruptedException {
         // View Your Policy
-        Thread.sleep(5000);
+
         System.out.println("Printed policy");
         WebElement viewYourPolicy = driver.findElement(By.xpath("//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']"));
         String policyNumber = viewYourPolicy.getText();
