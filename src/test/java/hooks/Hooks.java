@@ -8,24 +8,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Hooks {
 
-    private TestContext context;
-
-    public Hooks(TestContext context) {
-        this.context = context;
-    }
-
     private static WebDriver driver;
 
     @Before
     public void setUp() {
         System.out.println("************ Starting Browser ************");
-        context.driver = new ChromeDriver();
-        context.driver.manage().window().maximize();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     @After
     public void tearDown() {
-        context.driver.close();
+        driver.close();
         System.out.println("************* Drive closed ****************");
     }
 

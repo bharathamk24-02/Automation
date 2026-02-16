@@ -12,15 +12,7 @@ import java.sql.DriverManager;
 import java.util.List;
 
 public class PolicyCreation_steps {
-
-
-
-    private WebDriver driver;
-
-//    public PolicyCreation_steps(TestContext context) {
-//        this.driver = context.driver;
-//    }
-
+    WebDriver driver;
 
     public void clickActionBtnAndClickNewSubmission() {
 
