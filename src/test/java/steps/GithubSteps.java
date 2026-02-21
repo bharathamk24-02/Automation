@@ -25,6 +25,7 @@ public class GithubSteps {
     public void sendPostRequest() {
         String requestBody = "{ \"title\": \"BDD Issue\", \"body\": \"Created using Cucumber\" }";
 
+        System.out.println("The Token is :" + token);
         response =
                 given()
                         .header("Authorization", "Bearer " + token)
