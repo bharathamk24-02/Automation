@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -31,6 +32,8 @@ public class Training_stepdef {
     public void userDeletesTheTrainingRecord() {
         api.deleteMethod();
     }
+
+
 }
 
 

@@ -1,7 +1,6 @@
 Feature: Claim center Test Scenarios
 
-  @UI
-  @Regression @claimcenterTest
+  @UI @claimcenterTest
   Scenario: To verify the claimcenter FNON creation in Guideware
 
     Given User on the Guidware claim application
@@ -17,7 +16,7 @@ Feature: Claim center Test Scenarios
     And click on next btn from sevices page and click finish
     Then validate claim number and click on the claim number to validate details
 
-  @Regression
+  @UI @Regression @claimcenterTest
   Scenario: To verify the claimcenter Exposure creation in Guideware
     Given User on the Guidware claim application
     When  user enters the username and password

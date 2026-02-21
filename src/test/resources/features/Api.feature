@@ -7,3 +7,10 @@ Feature: API TEST SCENARIOS
     When user updates the training record
     And user fetches the training record
     Then user deletes the training record
+
+  @Regression
+  Scenario: Create a new GitHub issue using token
+    Given User sets GitHub base URI
+    And User sets Authorization token
+    When User sends POST request to create issue
+    Then Response status code should be 201

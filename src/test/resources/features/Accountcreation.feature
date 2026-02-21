@@ -4,7 +4,7 @@ Feature: Account Creation Test cases
   @Regression @AccountCreationTest
   Scenario: To verify the account creation in Guideware
 
-    Given User on the Guidware application
+    Given User on the Guideware application
     When user enters the username and password
     And user click on the okay Button
     And user click on Account button and click New account creation

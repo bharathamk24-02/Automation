@@ -16,7 +16,7 @@ public class Account_Creation extends CommonMethods {
     AccountCreation_Steps steps = new AccountCreation_Steps();
 
     @Given("User on the Guidware application")
-    public void userOnTheGuidwareApplication() throws InterruptedException {
+    public void userOnTheGuidewareApplication() throws InterruptedException {
        steps.login();
     }
 
