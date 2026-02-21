@@ -178,7 +178,7 @@ public class PolicyCreation_steps extends CommonMethods {
 
         Thread.sleep(1000);
         driver.findElement(By.xpath("//span[contains(text(),'OK')]")).click();
-        Thread.sleep(5000);
+        Thread.sleep(6000);
     }
 
     public void clickViewYourPolicyAndValidateSummaryPolicyTable() throws InterruptedException {
@@ -191,7 +191,7 @@ public class PolicyCreation_steps extends CommonMethods {
         viewYourPolicy.click();
 
         // summary Policy Table
-
+        Thread.sleep(2000);
         List<WebElement> summaryTableData = driver.findElements(By.id("PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_AccountDV-table"));
         for (int i = 0; i < summaryTableData.size(); i++) {
             System.out.println("********** The Account Holder Details : " + "/n " + summaryTableData.get(i).getText());
