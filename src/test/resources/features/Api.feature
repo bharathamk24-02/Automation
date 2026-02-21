@@ -1,6 +1,6 @@
 Feature: API TEST SCENARIOS
 
-  @API @Regression-1
+  @API @Regression
   Scenario: Create, Update, Get and Delete Training
 
     Given user creates a new training record
@@ -8,7 +8,7 @@ Feature: API TEST SCENARIOS
     And user fetches the training record
     Then user deletes the training record
 
-  @Regression-1
+  @Regression
   Scenario: Create a new GitHub issue using token
     Given User sets GitHub base URI
     And User sets Authorization token
