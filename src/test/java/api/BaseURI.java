@@ -16,11 +16,9 @@ public interface BaseURI {
     public static final String TRAININGS =
             BASE + "/api/trainings";
 
-    Dotenv dotenv = Dotenv.load();
+//    Dotenv dotenv = Dotenv.load();
 
-    public static String token = dotenv.get("GITHUB_TOKEN");
-    String username = dotenv.get("GITHUB_USERNAME");
-    String baseUri = dotenv.get("BASE_URI");
+    String token = System.getenv("GITHUB_TOKEN");
     public static final String githubPostRequest = "https://api.github.com";
 }
 
